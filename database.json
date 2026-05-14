@@ -1,5 +1,16 @@
 {
   "scripts": {
+    "Custom Hotbar": {
+      "title": "Custom Hotbar",
+      "displayTitle": "Custom Hotbar",
+      "visibility": "PUBLIC",
+      "description": "",
+      "expiration": null,
+      "filename": "custom-hotbar.lua",
+      "size": 10,
+      "created": "2026-05-14T20:00:00.562Z",
+      "updated": "2026-05-14T20:00:00.562Z"
+    },
     "Animated Loading Screen": {
       "title": "Animated Loading Screen",
       "displayTitle": "Animated Loading Screen",
