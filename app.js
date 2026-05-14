@@ -1,5 +1,5 @@
 const CONFIG = {
-    user: 'kenz-zz',
+    user: 'simplyIeaf',
     repo: 'kenz-zz.github.io',
     branch: 'main',
     cacheBuster: () => Date.now()
