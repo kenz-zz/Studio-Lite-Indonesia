@@ -1,6 +1,6 @@
 const CONFIG = {
-    user: 'simplyIeaf',
-    repo: 'simplyIeaf.github.io',
+    user: 'kenz-zz',
+    repo: 'kenz-zz.github.io/Studio-Lite-Indonesia',
     branch: 'main',
     cacheBuster: () => Date.now()
 };
