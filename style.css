@@ -3,8 +3,8 @@
     --bg-secondary: #001a33;
     --surface: #050505;
     --surface-hover: #111111;
-    --color-primary: #10b981;
-    --color-primary-hover: #059669;
+    --color-primary: #6cbcff;
+    --color-primary-hover: #5ab0ff;
     --color-primary-dim: rgba(16, 185, 129, 0.1);
     --color-border: #1a1a1a;
     --color-text: #ffffff;
@@ -42,7 +42,7 @@
 }
 
 body {
-    background: var(--bg-primary);
+    background: linear-gradient(to bottom right, var(--bg-primary), var(--bg-secondary));
     color: var(--color-text);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
