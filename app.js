@@ -1,6 +1,6 @@
 const CONFIG = {
     user: 'kenz-zz',
-    repo: 'kenz-zz.github.io/Studio-Lite-Indonesia',
+    repo: 'kenz-zz.github.io',
     branch: 'main',
     cacheBuster: () => Date.now()
 };
