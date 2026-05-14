@@ -781,4 +781,4 @@ textarea.input-field {
     .modal-overlay { padding: 10px; align-items: flex-start; }
     .modal { max-height: 80vh; margin-top: 20px; margin-bottom: 20px; }
     .CodeMirror { height: 250px !important; }
-}
+    }
