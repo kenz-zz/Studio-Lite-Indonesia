@@ -2,7 +2,7 @@
   "scripts": {
     "Wall Climbing System": {
       "title": "Wall Climbing System",
-      "visibility": "PUBLIC",
+      "visibility": "PRIVATE",
       "description": "",
       "expiration": "",
       "filename": "wall-climbing-system.lua",
