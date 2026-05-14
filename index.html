@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf's Scripts</title>
+    <link rel="icon" type="image/png" href="https://yt3.ggpht.com/wrMKTrl_4TexkVLuTILn1KZWW6NEbqTyLts9UhZNZhzLkOEBS13lBAi3gVl1Q465QruIDSwCUQ=s160-c-k-c0x00ffffff-no-rj">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css">
+</head>
+<body>
+    <nav class="navbar animate__animated animate__fadeInDown">
+        <div class="nav-content">
+            <div class="nav-left">
+                <button class="brand" onclick="navigate('')" style="background:none;border:none;padding:0;cursor:pointer">
+                    <img src="https://yt3.ggpht.com/wrMKTrl_4TexkVLuTILn1KZWW6NEbqTyLts9UhZNZhzLkOEBS13lBAi3gVl1Q465QruIDSwCUQ=s160-c-k-c0x00ffffff-no-rj" class="nav-icon" alt="Icon">
+                    <span class="nav-title" style="color: #ffffff;">Leaf's Scripts</span>
+                </button>
+            </div>
+            
+            <div class="nav-center">
+                <div class="search-wrapper">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="search" placeholder="Search scripts..." aria-label="Search scripts">
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div id="auth-section">
+                    <button class="btn btn-secondary btn-sm" onclick="app.toggleLoginModal()">Login</button>
+                </div>
+                <div id="user-section" style="display:none">
+                    <button class="btn btn-primary btn-sm" onclick="navigate('admin')">Manage</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="login-modal" class="modal-overlay animate__animated animate__fadeIn" style="display:none" onclick="if(event.target===this) app.toggleLoginModal()">
+        <div class="modal animate__animated animate__zoomIn">
+            <div class="modal-header">
+                <h3>Login</h3>
+                <button class="close-btn" onclick="app.toggleLoginModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="auth-token" class="input-field" placeholder="ghp_..." autocomplete="off" onkeypress="if(event.key==='Enter') app.login()">
+                </div>
+                <div id="login-error" role="alert" aria-live="polite" style="color:var(--color-danger);font-size:13px;margin:16px 0;text-align:center;display:none"></div>
+                <button class="btn btn-full" onclick="app.login()">Enter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="view-home" class="view-section animate__animated animate__fadeIn" style="display:block">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Filters</h3>
+                        <div class="sidebar-links">
+                            <a href="#" class="sidebar-link active" data-filter="all" onclick="event.preventDefault(); app.filterCategory('all', event)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                </svg>
+                                All Scripts
+                            </a>
+                            <a href="#" class="sidebar-link" data-filter="public" onclick="event.preventDefault(); app.filterCategory('public', event)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M2 12h20"></path>
+                                </svg>
+                                Public
+                            </a>
+                            <a href="#" class="sidebar-link" id="private-filter" style="display:none" data-filter="private" onclick="event.preventDefault(); app.filterCategory('private', event)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                                Private
+                            </a>
+                            <a href="#" class="sidebar-link" id="unlisted-filter" style="display:none" data-filter="unlisted" onclick="event.preventDefault(); app.filterCategory('unlisted', event)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                    <polyline points="13 2 13 9 20 9"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                Unlisted
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar-section sidebar-sort">
+                        <h3 class="sidebar-title">Sort By</h3>
+                        <select class="input-field select-sm" id="sort-select" onchange="app.setSort(this.value)">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="alpha">A-Z</option>
+                            <option value="updated">Recently Updated</option>
+                        </select>
+                    </div>
+                </aside>
+                
+                <main class="main-content">
+                    <div class="script-grid" id="script-list">
+                        <div style="text-align:center;padding:60px 0;grid-column:1/-1">
+                            <div class="spinner"></div>
+                            <p>Loading library...</p>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="view-admin" class="view-section animate__animated animate__fadeIn" style="display:none">
+            <div class="admin-top-controls">
+                <button class="btn-back" onclick="navigate('')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Site
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="app.logout()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
+            </div>
+            
+            <div class="admin-panel">
+                <div class="admin-header-flex">
+                    <h2>Admin Panel</h2>
+                    <div class="tab-switcher">
+                        <button class="tab-btn active" onclick="app.switchAdminTab('list')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            </svg>
+                            Manage
+                        </button>
+                        <button class="tab-btn" onclick="app.switchAdminTab('create')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Add New
+                        </button>
+                        <button class="tab-btn" onclick="app.switchAdminTab('bots')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 8v4l3 3"></path>
+                            </svg>
+                            Bots
+                        </button>
+                    </div>
+                </div>
+
+                <div id="admin-tab-editor" class="admin-tab" style="display:none">
+                    <div class="editor-container">
+                        <h3 id="editor-heading">Create New Script</h3>
+                        <div class="form-row">
+                            <div class="form-group form-group-flex">
+                                <label>Script Title</label>
+                                <input type="text" id="edit-title" class="input-field" placeholder="e.g. Advanced NPC System">
+                            </div>
+                            <div class="form-group">
+                                <label>Visibility</label>
+                                <select id="edit-visibility" class="input-field">
+                                    <option value="PUBLIC">Public</option>
+                                    <option value="PRIVATE">Private</option>
+                                    <option value="UNLISTED">Unlisted</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group form-group-flex">
+                                <label>Description</label>
+                                <textarea id="edit-desc" class="input-field" rows="4" placeholder="Briefly describe your script..."></textarea>
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label>Lua Source</label>
+                            <textarea id="edit-code" class="input-field code-textarea"></textarea>
+                        </div>
+    
+                        <div class="editor-actions">
+                            <div class="action-buttons">
+                                <button class="btn btn-secondary" onclick="app.switchAdminTab('list')">Cancel</button>
+                                <button class="btn" onclick="app.saveScript()">Publish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="admin-tab-list" class="admin-tab" style="display:block">
+                    <div class="admin-list-header">
+                        <h3>Existing Scripts</h3>
+                        <span id="total-stats">Loading...</span>
+                    </div>
+                    <div id="admin-list"></div>
+                </div>
+
+                <div id="admin-tab-bots" class="admin-tab" style="display:none">
+                    <div class="admin-list-header">
+                        <h3>Bot Posts</h3>
+                        <button class="btn btn-sm" onclick="app.switchAdminTab('create-bot')">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Create Bot
+                        </button>
+                    </div>
+                    <div id="bots-list"></div>
+                </div>
+
+                <div id="admin-tab-bot-editor" class="admin-tab" style="display:none">
+                    <div class="bot-form-container">
+                        <h3 id="bot-editor-heading">Create New Bot</h3>
+                        <div class="form-group">
+                            <label>Post Title</label>
+                            <input type="text" id="bot-title" class="input-field" placeholder="Thread title for Discord">
+                        </div>
+                        <div class="form-group">
+                            <label>Message Content</label>
+                            <textarea id="bot-message" class="input-field" rows="4" placeholder="Message to send to Discord"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="bot-schedule" onchange="app.toggleScheduleFields()">
+                                Schedule Post
+                            </label>
+                        </div>
+                        <div id="schedule-fields" class="schedule-fields">
+                            <div class="form-group">
+                                <label>Scheduled Time</label>
+                                <input type="datetime-local" id="bot-schedule-time" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label>Timezone</label>
+                                <select id="bot-timezone" class="input-field">
+                                    <option value="UTC">UTC</option>
+                                    <option value="America/New_York">Eastern Time (ET)</option>
+                                    <option value="America/Chicago">Central Time (CT)</option>
+                                    <option value="America/Denver">Mountain Time (MT)</option>
+                                    <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                                    <option value="Europe/London">London (GMT)</option>
+                                    <option value="Europe/Paris">Paris (CET)</option>
+                                    <option value="Asia/Tokyo">Tokyo (JST)</option>
+                                    <option value="Australia/Sydney">Sydney (AEST)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="bot-actions">
+                            <div class="action-buttons">
+                                <button class="btn btn-secondary" onclick="app.switchAdminTab('bots')">Cancel</button>
+                                <button class="btn" onclick="app.saveBot()">Send Bot</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/lua/lua.min.js"></script>
+    <script src="app.js"></script>
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "468b54ebf85b4f809e3ba2eda2d74612"}'></script></body>
+  </html>
