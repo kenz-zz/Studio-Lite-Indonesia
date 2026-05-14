@@ -45,7 +45,7 @@
                 <div class="toolbar-right">
                     <button class="btn btn-sm" onclick="downloadScript()">Download</button>
                     <button class="btn btn-sm" onclick="copyScript(this)">Copy</button>
-                    <a href="raw/custom-hotbar.lua" class="btn btn-secondary btn-sm" target="_blank">Raw</a>
+                    <a href="custom-hotbar.lua" class="btn btn-secondary btn-sm" target="_blank">Raw</a>
                 </div>
             </div>
             <pre><code id="code-display" class="language-lua">Loading...</code></pre>
@@ -56,7 +56,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
     <script>
         const filename = 'custom-hotbar.lua';
-        const scriptId = 'custom-hotbar';       
+        const scriptId = 'custom-hotbar';
+        
         async function loadScript() {
             try {
                 const res = await fetch(`raw/${filename}`);
@@ -91,4 +92,4 @@
         loadScript();
     </script>
 </body>
-              </html>
+</html>
