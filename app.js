@@ -94,6 +94,8 @@ const app = {
     scheduledTimers: {},
     
     async init() {
+        this.isAuthenticated = false;
+        this.token = null;
         const sessionValid = await this.loadSession();
         await this.loadDatabase();
         this.handleRouting();
@@ -213,40 +215,9 @@ const app = {
         }
     },
 
-    toggleLoginModal() {
-        const modal = document.getElementById('login-modal');
-        modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-        document.getElementById('login-error').style.display = 'none';
-        if (modal.style.display === 'flex') {
-            document.getElementById('auth-token').focus();
-        }
-    },
+    toggleLoginModal() { return; },
 
-    async login() {
-        if (this.actionInProgress) return;
-        this.actionInProgress = true;
-        
-        try {
-            const token = document.getElementById('auth-token').value.trim();
-            if (!token) {
-                this.showLoginError('Token is required');
-                return;
-            }
-            
-            this.token = token;
-            const success = await this.verifyToken(false);
-            if (success) {
-                this.saveSession();
-                this.toggleLoginModal();
-                document.getElementById('auth-token').value = '';
-                await this.loadDatabase();
-                this.renderList();
-                this.showToast('Logged in successfully!', 'success');
-            }
-        } finally {
-            this.actionInProgress = false;
-        }
-    },
+    async login() { this.showToast('Login has been removed', 'info'); },
 
     showLoginError(message) {
         const err = document.getElementById('login-error');
@@ -270,39 +241,7 @@ const app = {
         }
     },
 
-    logout(silent = false) {
-        if (!silent && !confirm('Are you sure you want to logout?')) {
-            return;
-        }
-        
-        try {
-            localStorage.removeItem('gh_token');
-            localStorage.removeItem('gh_user');
-            localStorage.removeItem('gh_token_expiry');
-        } catch(e) {}
-        
-        this.token = null;
-        this.currentUser = null;
-        this.db = null;
-        this.dbSha = null;
-        
-        Object.values(this.scheduledTimers).forEach(timer => clearTimeout(timer));
-        this.scheduledTimers = {};
-        
-        document.getElementById('auth-section').style.display = 'block';
-        document.getElementById('user-section').style.display = 'none';
-        const privateFilter = document.getElementById('private-filter');
-        const unlistedFilter = document.getElementById('unlisted-filter');
-        if (privateFilter) privateFilter.style.display = 'none';
-        if (unlistedFilter) unlistedFilter.style.display = 'none';
-        
-        location.href = '#';
-        
-        if (!silent) {
-            this.showToast('Logged out successfully', 'success');
-            setTimeout(() => location.reload(), 1000);
-        }
-    },
+    logout(silent = false) { this.showToast('Logout disabled', 'info'); },
 
     async verifyToken(silent) {
         try {
