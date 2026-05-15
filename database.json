@@ -2,7 +2,7 @@
   "scripts": {
     "Wall Climbing System": {
       "title": "Wall Climbing System",
-      "visibility": "SCRIPT",
+      "visibility": "PUBLIC",
       "description": "",
       "expiration": "",
       "filename": "wall-climbing-system.lua",
@@ -18,8 +18,8 @@
       "expiration": null,
       "filename": "custom-hotbar.lua",
       "size": 0,
-      "created": "2026-05-14T20:48:02Z",
-      "updated": "2026-05-14T20:48:02Z"
+      "created": "2026-05-13T20:48:02Z",
+      "updated": "2026-05-13T20:48:02Z"
     }
   }
 }
