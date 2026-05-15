@@ -2,8 +2,10 @@
     --bg-primary: #000000;
     --bg-gradient: linear-gradient(to bottom right, #000, #001a33);
     --bg-secondary: #0a0a0a;
-    --surface: linear-gradient(145deg, rgba(0, 20, 40, 0.8), rgba(0, 45, 90, 0.8));
-    --surface-hover: linear-gradient(145deg, rgba(10, 50, 100, 0.9), rgba(0, 70, 130, 0.9));
+    --surface: #050505;
+    --surface-hover: #111111;
+    --surface-secondary: linear-gradient(145deg, rgba(0, 20, 40, 0.8), rgba(0, 45, 90, 0.8));
+    --surface-secondary-hover: linear-gradient(145deg, rgba(10, 50, 100, 0.9), rgba(0, 70, 130, 0.9));
     --color-primary: #5ab0ff;
     --color-primary-hover: #5ab0ff;
     --color-primary-dim: rgba(16, 185, 129, 0.1);
@@ -253,7 +255,7 @@ input, button, textarea, select {
 }
 
 .script-card {
-    background: var(--surface); 
+    background: var(--surface-secondary); 
     border: 1px solid var(--color-border); 
     border-radius: 12px;
     padding: 24px; 
@@ -264,6 +266,7 @@ input, button, textarea, select {
 }
 
 .script-card:hover { 
+    background: var(--surface-secondary-hover);
     transform: translateY(-2px); 
     border-color: var(--color-primary);
     box-shadow: var(--neon);
