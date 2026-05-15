@@ -279,12 +279,13 @@ const app = {
                 list.innerHTML = `<div style="text-align:center;padding:20px"><div class="spinner"></div><p>Loading...</p></div>`;
             }
             
-            const url = `https://api.github.com/repos/${CONFIG.user}/${CONFIG.repo}/contents/database.json?t=${CONFIG.cacheBuster()}`;
-            const headers = this.token ? { 'Authorization': `token ${this.token}` } : {};
-            
-            const res = await fetch(url, { headers });
-            
-            if (res.status === 404) {
+            const url = `https://${CONFIG.user}.github.io/database.json?t=${CONFIG.cacheBuster()}`;
+
+const res = await fetch(url, {
+    cache: 'no-store'
+});
+
+if (res.status === 404) {
                 this.db = { scripts: {}, bots: {} };
                 this.dbSha = null;
                 this.renderList();
@@ -294,12 +295,8 @@ const app = {
             
             if (!res.ok) throw new Error(`Failed to load database: ${res.status}`);
             
-            const file = await res.json();
-            this.dbSha = file.sha;
-            
-            try {
-                const content = utils.safeAtob(file.content);
-                this.db = JSON.parse(content);
+            const data = await res.json();
+this.db = data;
                 if (!this.db.scripts) this.db.scripts = {};
                 if (!this.db.bots) this.db.bots = {};
 
@@ -311,11 +308,6 @@ const app = {
                         this.scheduleBotTimer(botId, bot);
                     }
                 });
-                
-            } catch(parseError) {
-                console.error('Database parse error:', parseError);
-                this.db = { scripts: {}, bots: {} };
-            }
             
             this.renderList();
             this.renderAdminList();
