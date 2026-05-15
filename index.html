@@ -36,31 +36,12 @@
             </div>
 
             <div class="nav-right">
-                <div id="auth-section">
-                    <button class="btn btn-secondary btn-sm" onclick="app.toggleLoginModal()">Login</button>
-                </div>
-                <div id="user-section" style="display:none">
-                    <button class="btn btn-primary btn-sm" onclick="navigate('admin')">Manage</button>
-                </div>
+                
             </div>
         </div>
     </nav>
     
-    <div id="login-modal" class="modal-overlay animate__animated animate__fadeIn" style="display:none" onclick="if(event.target===this) app.toggleLoginModal()">
-        <div class="modal animate__animated animate__zoomIn">
-            <div class="modal-header">
-                <h3>Login</h3>
-                <button class="close-btn" onclick="app.toggleLoginModal()">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="auth-token" class="input-field" placeholder="ghp_..." autocomplete="off" onkeypress="if(event.key==='Enter') app.login()">
-                </div>
-                <div id="login-error" role="alert" aria-live="polite" style="color:var(--color-danger);font-size:13px;margin:16px 0;text-align:center;display:none"></div>
-                <button class="btn btn-full" onclick="app.login()">Enter</button>
-            </div>
-        </div>
+    
     </div>
 
     <div class="container">
