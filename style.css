@@ -10,6 +10,7 @@
     --color-primary-hover: #5ab0ff;
     --color-primary-dim: rgba(16, 185, 129, 0.1);
     --color-border: #001a33;
+    --color-border-secondary: #6cbcff;
     --color-text: #ffffff;
     --color-text-muted: #a0a0a0;
     --color-danger: #ef4444;
@@ -256,11 +257,11 @@ input, button, textarea, select {
 
 .script-card {
     background: var(--surface-secondary); 
-    border: 1px solid var(--color-primary); 
+    border: 1px solid var(--color-border-secondary); 
     border-radius: 12px;
     padding: 24px; 
-    cursor: pointer;
-    transition: all 0.2s ease; 
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease; 
     display: flex; 
     flex-direction: column;
 }
