@@ -765,7 +765,7 @@ textarea.input-field {
     .search-icon { left: 12px; width: 14px; height: 14px; }
     .nav-right { gap: 8px; }
     .nav-icon { width: 28px; height: 28px; }
-    .container { margin-top: 125px; padding: 0 16px; }
+    .container { margin-top: 100px; padding: 0 16px; }
     .toolbar { flex-direction: column; align-items: stretch; }
     .toolbar-right { justify-content: space-between; margin-top: 10px; }
     .toolbar-right .btn { flex: 1; }
@@ -783,7 +783,7 @@ textarea.input-field {
 
 @media (orientation: landscape) and (max-height: 500px) {
     .navbar { position: absolute; height: 56px; }
-    .container { margin-top: 125px; }
+    .container { margin-top: 100px; }
     .modal-overlay { padding: 10px; align-items: flex-start; }
     .modal { max-height: 80vh; margin-top: 20px; margin-bottom: 20px; }
     .CodeMirror { height: 250px !important; }
