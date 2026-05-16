@@ -259,7 +259,7 @@ input, button, textarea, select {
     background: var(--surface-secondary); 
     border: 1px solid var(--color-border-secondary); 
     border-radius: 12px;
-    padding: 24px; 
+    padding: 150px; 
     backdrop-filter: blur(6px);
     transition: all 0.3s ease; 
     display: flex; 
