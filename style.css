@@ -196,8 +196,8 @@ input, button, textarea, select {
 
 .container {
     max-width: 1400px; 
-    margin: 80px auto 100px; 
-    padding: 0 36px;
+    margin: 80px auto 40px; 
+    padding: 0 200px;
     min-height: calc(100vh - 120px);
 }
 
