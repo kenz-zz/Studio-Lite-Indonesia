@@ -459,8 +459,7 @@ code {
     border: none;
     color: var(--color-text-muted); 
     padding: 8px 14px; 
-    border-radius: 6px; 
-    cursor: pointer; 
+    border-radius: 6px;
     font-weight: 600; 
     font-size: 13px; 
     transition: 0.2s;
