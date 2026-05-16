@@ -259,7 +259,7 @@ input, button, textarea, select {
     background: var(--surface-secondary); 
     border: 1px solid var(--color-border-secondary); 
     border-radius: 12px;
-    padding: 150px; 
+    padding: 24px; 
     backdrop-filter: blur(6px);
     transition: all 0.3s ease; 
     display: flex; 
@@ -317,7 +317,7 @@ input, button, textarea, select {
     display: flex; 
     justify-content: space-between;
     align-items: flex-start; 
-    margin-bottom: 24px; 
+    margin-bottom: 100px; 
     flex-wrap: wrap; 
     gap: 16px; 
 }
