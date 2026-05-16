@@ -196,8 +196,8 @@ input, button, textarea, select {
 
 .container {
     max-width: 1400px; 
-    margin: 80px auto 40px; 
-    padding: 0 100px;
+    margin: 80px auto 100px; 
+    padding: 0 36px;
     min-height: calc(100vh - 120px);
 }
 
@@ -317,7 +317,7 @@ input, button, textarea, select {
     display: flex; 
     justify-content: space-between;
     align-items: flex-start; 
-    margin-bottom: 100px; 
+    margin-bottom: 24px; 
     flex-wrap: wrap; 
     gap: 16px; 
 }
@@ -326,7 +326,7 @@ input, button, textarea, select {
     font-size: 32px; 
     letter-spacing: -1px;
     line-height: 1.2; 
-    margin-bottom: 100px;
+    margin-bottom: 12px;
     font-weight: 800;
 }
 
