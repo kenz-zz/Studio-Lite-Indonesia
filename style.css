@@ -1000,7 +1000,7 @@ transform: translateY(-2px);
 }
 
 .footer-socials .tt:hover {
-    border-color: #000;
+    border-color: #000000;
     box-shadow: 0 0 18px rgba(0,0,0,.35);
 }
 
