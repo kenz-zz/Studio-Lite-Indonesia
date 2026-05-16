@@ -907,7 +907,7 @@ transform: translateY(-2px);
 .tab-btn:hover,
 .btn-secondary:hover {
     transform: translateY(-2px);
-    border: 2px solid rgba(255,255,255,0.25) !important;
+    border-color: rgba(255,255,255,0.25) !important;
     box-shadow:
         0 14px 40px rgba(0,0,0,.45),
         0 0 25px rgba(90,176,255,.18);
