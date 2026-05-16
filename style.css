@@ -242,8 +242,6 @@ input, button, textarea, select {
 
 .sidebar-link svg { opacity: 0.6; }
 .sidebar-link:hover { color: var(--color-text); background: var(--surface); }
-.sidebar-link.active { color: var(--color-primary); background: var(--color-primary-dim); }
-.sidebar-link.active svg { opacity: 1; }
 
 .select-sm {
     padding: 8px 12px;
@@ -887,6 +885,9 @@ textarea.input-field {
         0 0 25px rgba(90,176,255,.18);
     background: rgba(255,255,255,0.09) !important;
 }
+
+.sidebar-link.active { color: var(--color-primary); border-color: var(--color-primary) !important; }
+.sidebar-link.active svg { opacity: 1; }
 
 .script-card:hover {
     transform: translateY(-6px) scale(1.01);
