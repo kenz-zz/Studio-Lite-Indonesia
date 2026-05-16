@@ -388,8 +388,8 @@ pre {
 }
 
 code { 
-    font-family: 'Courier New', monospace; 
-    font-size: 13px; 
+    font-family: 'JetBrains Mono', monospace; 
+    font-size: clamp(12px, 2vw, 14px); 
     text-shadow: none !important;
     line-height: 1.6;
     tab-size: 2;
@@ -778,8 +778,6 @@ textarea.input-field {
     .editor-container, .bot-form-container { padding: 20px; }
     .form-row { flex-direction: column; gap: 16px; }
     .editor-actions, .bot-actions { flex-direction: column; align-items: stretch; }
-    .action-buttons { width: 100%; flex-direction: column; gap: 8px; }
-    .action-buttons .btn { width: 100%; }
     .CodeMirror { height: 300px !important; }
 }
 
