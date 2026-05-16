@@ -44,7 +44,7 @@
             <div class="toolbar">
                 <div class="file-info">.lua</div>
                 <div class="toolbar-right">
-                    <button class="btn btn-sm icon-btn" onclick="downloadScript()" title="Download">
+                    <button class="btn btn-sm icon-btn" onclick="downloadScript(this)" title="Download">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
     stroke="currentColor" stroke-width="2">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -85,23 +85,55 @@
         }
         
         function copyScript(btn) {
-            const code = document.getElementById('code-display').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const original = btn.innerText;
-                btn.innerText = 'Copied!';
-                setTimeout(() => btn.innerText = original, 2000);
-            });
+    const code = document.getElementById('code-display').textContent;
+
+    navigator.clipboard.writeText(code).then(() => {
+
+        const original = btn.innerHTML;
+
+        btn.innerHTML = 'Copied!';
+        btn.style.width = 'auto';
+        btn.style.padding = '0 14px';
+
+        setTimeout(() => {
+            btn.innerHTML = original;
+            btn.style.width = '';
+            btn.style.padding = '';
+        }, 2000);
+
+    });
         }
         
-        function downloadScript() {
-            const code = document.getElementById('code-display').textContent;
-            const element = document.createElement('a');
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code));
-            element.setAttribute('download', filename);
-            element.style.display = 'none';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
+        function downloadScript(btn) {
+    const original = btn.innerHTML;
+
+    btn.innerHTML = 'Downloading!';
+    btn.style.width = 'auto';
+    btn.style.padding = '0 14px';
+
+    const code = document.getElementById('code-display').textContent;
+    const element = document.createElement('a');
+
+    element.setAttribute(
+        'href',
+        'data:text/plain;charset=utf-8,' + encodeURIComponent(code)
+    );
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+
+    setTimeout(() => {
+        btn.innerHTML = 'Downloaded!';
+
+        setTimeout(() => {
+            btn.innerHTML = original;
+            btn.style.width = '';
+            btn.style.padding = '';
+        }, 1500);
+
+    }, 500);
         }
         
         loadScript();
