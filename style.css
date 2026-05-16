@@ -48,6 +48,8 @@
 
 body {
     background: var(--bg-gradient);
+    background-attachment: fixed;
+    background-size: cover;
     color: var(--color-text);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
