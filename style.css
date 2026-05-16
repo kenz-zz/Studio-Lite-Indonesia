@@ -768,9 +768,6 @@ textarea.input-field {
     .nav-right { gap: 8px; }
     .nav-icon { width: 28px; height: 28px; }
     .container { margin-top: 100px; padding: 0 16px; }
-    .toolbar { flex-direction: column; align-items: stretch; }
-    .toolbar-right { justify-content: space-between; margin-top: 10px; }
-    .toolbar-right .btn { flex: 1; }
     .script-grid { grid-template-columns: 1fr; }
     .admin-header-flex { flex-direction: column; align-items: stretch; }
     .tab-switcher { width: 100%; }
@@ -778,6 +775,8 @@ textarea.input-field {
     .editor-container, .bot-form-container { padding: 20px; }
     .form-row { flex-direction: column; gap: 16px; }
     .editor-actions, .bot-actions { flex-direction: column; align-items: stretch; }
+    .action-buttons { width: 100%; flex-direction: column; gap: 8px; }
+    .action-buttons .btn { width: 100%; }
     .CodeMirror { height: 300px !important; }
 }
 
