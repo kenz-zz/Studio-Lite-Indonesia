@@ -385,7 +385,7 @@ pre {
     background: #000000 !important;
 }
 
-.code { 
+code { 
     font-family: 'Courier New', monospace; 
     font-size: 13px; 
     text-shadow: none !important;
@@ -767,7 +767,7 @@ textarea.input-field {
     .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
     .toolbar-right { display: flex; gap: 8px; margin-top: 0; }
     .file-info { font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .code { font-size: 8px; }
+    code { font-size: 8px; }
     .toolbar-right .btn { flex: 1; }
     .script-grid { grid-template-columns: 1fr; }
     .admin-header-flex { flex-direction: column; align-items: stretch; }
