@@ -387,7 +387,7 @@ pre {
 
 code { 
     font-family: 'JetBrains Mono', monospace; 
-    font-size: clamp(12px, 2vw, 14px); 
+    font-size: clamp(5px, 2vw, 14px); 
     text-shadow: none !important;
     line-height: 1.6;
     tab-size: 2;
@@ -984,25 +984,10 @@ transform: translateY(-2px);
     box-shadow: 0 0 18px rgba(90,176,255,.25);
 }
 
-.footer-socials .ro:hover {
-    border-color: #5ab0ff;
-    box-shadow: 0 0 18px rgba(90,176,255,.55);
-}
-
-.footer-socials .yt:hover {
-    border-color: #ff3b3b;
-    box-shadow: 0 0 18px rgba(255,59,59,.55);
-}
-
-.footer-socials .ig:hover {
-    border-color: #c135ff;
-    box-shadow: 0 0 18px rgba(193,53,255,.55);
-}
-
-.footer-socials .tt:hover {
-    border-color: #000000;
-    box-shadow: 0 0 18px rgba(0,0,0,.35);
-}
+.ro:hover { border-color: #5ab0ff; box-shadow: 0 0 18px rgba(90,176,255,.55); }
+.yt:hover { border-color: #ff3b3b; box-shadow: 0 0 18px rgba(255,59,59,.55); }
+.ig:hover { border-color: #c135ff; box-shadow: 0 0 18px rgba(193,53,255,.55); }
+.tt:hover { border-color: #ffffff; box-shadow: 0 0 18px rgba(255,255,255,.35); }
 
 .footer-socials img {
     width: 18px;
