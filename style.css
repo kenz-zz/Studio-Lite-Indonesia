@@ -373,9 +373,9 @@ input, button, textarea, select {
 .toolbar-right { display: flex; gap: 8px; }
 
 .file-info { 
-    font-size: 13px; 
+    font-size: 16px; 
     color: var(--color-text-muted); 
-    font-family: 'Courier New', monospace;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 pre { 
@@ -385,9 +385,9 @@ pre {
     background: #000000 !important;
 }
 
-code { 
-    font-family: 'JetBrains Mono', monospace; 
-    font-size: clamp(5px, 2vw, 14px); 
+.code { 
+    font-family: 'Courier New', monospace; 
+    font-size: 13px; 
     text-shadow: none !important;
     line-height: 1.6;
     tab-size: 2;
@@ -766,7 +766,8 @@ textarea.input-field {
     .container { margin-top: 100px; padding: 0 16px; }
     .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
     .toolbar-right { display: flex; gap: 8px; margin-top: 0; }
-    .file-info { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-info { font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .code { font-size: 8px; }
     .toolbar-right .btn { flex: 1; }
     .script-grid { grid-template-columns: 1fr; }
     .admin-header-flex { flex-direction: column; align-items: stretch; }
@@ -984,10 +985,25 @@ transform: translateY(-2px);
     box-shadow: 0 0 18px rgba(90,176,255,.25);
 }
 
-.ro:hover { border-color: #5ab0ff; box-shadow: 0 0 18px rgba(90,176,255,.55); }
-.yt:hover { border-color: #ff3b3b; box-shadow: 0 0 18px rgba(255,59,59,.55); }
-.ig:hover { border-color: #c135ff; box-shadow: 0 0 18px rgba(193,53,255,.55); }
-.tt:hover { border-color: #ffffff; box-shadow: 0 0 18px rgba(255,255,255,.35); }
+.footer-socials .ro:hover {
+    border-color: #5ab0ff;
+    box-shadow: 0 0 18px rgba(90,176,255,.55);
+}
+
+.footer-socials .yt:hover {
+    border-color: #ff3b3b;
+    box-shadow: 0 0 18px rgba(255,59,59,.55);
+}
+
+.footer-socials .ig:hover {
+    border-color: #c135ff;
+    box-shadow: 0 0 18px rgba(193,53,255,.55);
+}
+
+.footer-socials .tt:hover {
+    border-color: #000000;
+    box-shadow: 0 0 18px rgba(0,0,0,.35);
+}
 
 .footer-socials img {
     width: 18px;
